@@ -1,0 +1,33 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  background: var(--color-bg);
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-xl);
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  z-index: 15;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .backdrop {
+    display: block;
+  }
+}

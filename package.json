@@ -1,0 +1,10 @@
+{
+  "name": "auth-app",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "server"
+  ]
+}
