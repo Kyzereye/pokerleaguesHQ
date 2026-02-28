@@ -1,0 +1,112 @@
+.theList {
+  max-width: 720px;
+}
+
+.pageHeader {
+  margin-bottom: var(--space-lg);
+}
+
+.pageHeader h1 {
+  margin: 0 0 var(--space-xs) 0;
+}
+
+.gameDetailsCard {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.gameDetailsCard .muted {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 var(--space-xs) 0;
+}
+
+.gameCardTitle {
+  margin: 0 0 var(--space-sm) 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.playersList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.playerCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  flex-wrap: wrap;
+}
+
+.playerInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.playerNumber {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.playerName {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.signupTime {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.emptyState {
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.emptyState h3 {
+  margin: 0 0 var(--space-sm) 0;
+  font-size: 1.125rem;
+}
+
+.gamesList {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.gameCard {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.gameCard p {
+  margin: 0 0 var(--space-sm) 0;
+}

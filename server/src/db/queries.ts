@@ -52,6 +52,61 @@ ORDER BY u.created_at DESC`,
   update_user_by_id: `UPDATE user_details SET first_name = ?, last_name = ?, role = ?, status = ?, updated_at = CURRENT_TIMESTAMP(3) WHERE user_id = ?`,
 
   delete_user: `DELETE FROM users WHERE id = ?`,
+
+  list_venues: `SELECT id, name, street, city, state, zip FROM venues ORDER BY name`,
+
+  get_venue_by_id: `SELECT id, name, street, city, state, zip FROM venues WHERE id = ?`,
+
+  insert_venue: `INSERT INTO venues (id, name, street, city, state, zip) VALUES (?, ?, ?, ?, ?, ?)`,
+
+  update_venue: `UPDATE venues SET name = ?, street = ?, city = ?, state = ?, zip = ?, updated_at = CURRENT_TIMESTAMP(3) WHERE id = ?`,
+
+  delete_venue: `DELETE FROM venues WHERE id = ?`,
+
+  list_games: `SELECT g.id, g.venue_id, g.game_day, g.game_time, g.notes, v.name AS venue_name, v.street AS venue_street, v.city AS venue_city, v.state AS venue_state, v.zip AS venue_zip
+FROM games g
+JOIN venues v ON v.id = g.venue_id
+WHERE (? IS NULL OR g.game_day = ?)
+  AND (? IS NULL OR g.venue_id = ?)
+ORDER BY FIELD(g.game_day, 'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'), g.game_time`,
+
+  get_game_by_id: `SELECT g.id, g.venue_id, g.game_day, g.game_time, g.notes, v.name AS venue_name, v.street AS venue_street, v.city AS venue_city, v.state AS venue_state, v.zip AS venue_zip
+FROM games g
+JOIN venues v ON v.id = g.venue_id
+WHERE g.id = ?`,
+
+  insert_game: `INSERT INTO games (id, venue_id, game_day, game_time, notes) VALUES (?, ?, ?, ?, ?)`,
+
+  update_game: `UPDATE games SET venue_id = ?, game_day = ?, game_time = ?, notes = ?, updated_at = CURRENT_TIMESTAMP(3) WHERE id = ?`,
+
+  delete_game: `DELETE FROM games WHERE id = ?`,
+
+  get_my_signup: `SELECT gs.game_id, g.game_day, g.game_time, g.notes, v.name AS venue_name, v.street AS venue_street, v.city AS venue_city, v.state AS venue_state, v.zip AS venue_zip
+FROM game_signups gs
+JOIN games g ON g.id = gs.game_id
+JOIN venues v ON v.id = g.venue_id
+WHERE gs.user_id = ?
+LIMIT 1`,
+
+  insert_signup: `INSERT INTO game_signups (id, game_id, user_id) VALUES (UUID_TO_BIN(UUID()), ?, ?)`,
+
+  delete_signup_by_game_user: `DELETE FROM game_signups WHERE game_id = ? AND user_id = ?`,
+
+  get_signup_by_game_user: `SELECT 1 FROM game_signups WHERE game_id = ? AND user_id = ?`,
+
+  list_signups_for_game: `SELECT gs.signed_up_at, u.id AS user_id, ud.first_name, ud.last_name, u.email
+FROM game_signups gs
+JOIN users u ON u.id = gs.user_id
+LEFT JOIN user_details ud ON ud.user_id = u.id
+WHERE gs.game_id = ?
+ORDER BY gs.signed_up_at`,
+
+  list_standings: `SELECT ps.user_id, ps.period, ps.points, ps.wins, ud.first_name, ud.last_name, u.email
+FROM player_standings ps
+JOIN users u ON u.id = ps.user_id
+LEFT JOIN user_details ud ON ud.user_id = u.id
+WHERE (? IS NULL OR ps.period = ?)
+ORDER BY ps.points DESC, ps.wins DESC`,
 };
 
 export function getQuery(name: string): string {

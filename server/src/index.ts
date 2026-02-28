@@ -3,6 +3,7 @@ import cors from "cors";
 import rateLimit from "express-rate-limit";
 import { config } from "./config/index.js";
 import authRoutes from "./routes/auth.js";
+import gamesRoutes from "./routes/games.js";
 
 const app = express();
 app.use(cors({ origin: config.frontendUrl, credentials: true }));
@@ -15,6 +16,7 @@ const authLimiter = rateLimit({
 });
 app.use("/auth", authLimiter);
 app.use("/auth", authRoutes);
+app.use("/", gamesRoutes);
 
 app.listen(config.port, () => {
   console.log(`Server listening on port ${config.port}`);

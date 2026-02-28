@@ -132,6 +132,7 @@ export default function AdminUsers() {
                         onChange={(e) => setEditForm((f) => ({ ...f, role: e.target.value }))}
                       >
                         <option value="member">member</option>
+                        <option value="dealer">dealer</option>
                         <option value="admin">admin</option>
                       </select>
                     </td>

@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/context";
 import { api } from "../api/client";
 import PasswordField from "../components/PasswordField";
+import PasswordValidationFeedback from "../components/PasswordValidationFeedback";
 import ConfirmDialog from "../components/ConfirmDialog";
-import { checkPassword, isPasswordValid } from "../utils/password";
+import { isPasswordValid } from "../utils/password";
 import styles from "./Profile.module.css";
 
 export default function Profile() {
@@ -70,7 +71,6 @@ export default function Profile() {
     }
   }
 
-  const newPasswordReqs = checkPassword(newPassword);
   const passwordFormValid =
     currentPassword.trim() !== "" &&
     isPasswordValid(newPassword) &&
@@ -199,21 +199,13 @@ export default function Profile() {
               value={newPassword}
               onChange={setNewPassword}
             />
-            <ul className="requirements">
-              <li className={newPasswordReqs.length ? "met" : ""}>At least 8 characters</li>
-              <li className={newPasswordReqs.upper ? "met" : ""}>One uppercase letter</li>
-              <li className={newPasswordReqs.lower ? "met" : ""}>One lowercase letter</li>
-              <li className={newPasswordReqs.number ? "met" : ""}>One number</li>
-            </ul>
+            <PasswordValidationFeedback password={newPassword} confirm={confirmPassword} />
             <PasswordField
               label="Confirm new password"
               id="confirmPassword"
               value={confirmPassword}
               onChange={setConfirmPassword}
             />
-            {newPassword !== "" && confirmPassword !== "" && newPassword !== confirmPassword && (
-              <p className="error">Passwords do not match</p>
-            )}
             {passwordMessage && (
               <p className={passwordMessage.type === "ok" ? "success" : "error"}>{passwordMessage.text}</p>
             )}

@@ -1,0 +1,94 @@
+.pageHeader {
+  margin-bottom: var(--space-lg);
+}
+
+.filtersCard {
+  margin-bottom: var(--space-lg);
+}
+
+.filtersTitle {
+  margin-top: 0;
+  margin-bottom: var(--space-xs);
+}
+
+.filtersSubtitle {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: flex-end;
+}
+
+.noGames {
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.noGames p {
+  margin: 0 0 var(--space-sm);
+}
+
+.noGames p:last-child {
+  margin-bottom: 0;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.gameCard {
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--surface, #fff);
+}
+
+.gameCardDisabled {
+  opacity: 0.85;
+}
+
+.gameCardHeader {
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  padding-bottom: var(--space-sm);
+}
+
+.gameCardTitle {
+  margin: 0 0 var(--space-xs);
+  font-size: 1.1rem;
+}
+
+.gameCardBody {
+  flex: 1;
+}
+
+.gameDetail {
+  margin: 0 0 var(--space-xs);
+  font-size: 0.9rem;
+}
+
+.gameDetail:last-child {
+  margin-bottom: 0;
+}
+
+.gameDetailIcon {
+  margin-right: var(--space-xs);
+}
+
+.gameCardActions {
+  margin-top: auto;
+  padding-top: var(--space-sm);
+}
+
+.disabledSignup {
+  margin: 0;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,139 @@
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.pageHeader h1 {
+  margin: 0;
+}
+
+.addFormCard {
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  max-width: 640px;
+}
+
+.addFormCard h2 {
+  margin: 0 0 var(--space-md);
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.addForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.addFormGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.addForm .formRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.addForm .formRow label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.addForm .formRow input {
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s;
+}
+
+.addForm .formRow input:focus,
+.addForm .formRow select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.addForm .formRow .select {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.editDialogForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.editDialogForm .formRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.editDialogForm .formRow label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.editDialogForm .formRow .input,
+.editDialogForm .formRow .select {
+  width: 100%;
+}
+
+.editAddressFields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.editAddressFields .input,
+.editAddressFields .select {
+  min-width: 80px;
+}
+
+.editAddressFields .input:nth-child(1) {
+  flex: 1;
+  min-width: 120px;
+}
+
+.addFormActions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.addFormActions .btn {
+  min-width: 0;
+}
+
+.filterLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}

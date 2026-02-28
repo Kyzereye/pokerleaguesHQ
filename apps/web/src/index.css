@@ -282,6 +282,31 @@ input::placeholder {
   opacity: 0.8;
 }
 
+/* Colored small buttons: override btn-sm surface/outline styling */
+.btn-primary.btn-sm {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.btn-primary.btn-sm:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: #fff;
+}
+
+.btn-danger.btn-sm {
+  background: var(--color-error);
+  color: #fff;
+  border-color: var(--color-error);
+}
+
+.btn-danger.btn-sm:hover:not(:disabled) {
+  background: #cc0000;
+  border-color: #cc0000;
+  color: #fff;
+}
+
 .btn-icon {
   padding: var(--space-sm);
   min-width: 2.5rem;
@@ -338,6 +363,13 @@ input::placeholder {
 
 .requirements li.met {
   color: #16a34a;
+}
+
+.requirements li.error {
+  color: var(--color-error);
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 /* -----------------------------------------------------------------------------

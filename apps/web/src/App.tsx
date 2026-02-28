@@ -12,7 +12,8 @@ import TheList from "./pages/TheList";
 import Standings from "./pages/Standings";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminUsers from "./pages/AdminUsers";
-import AdminBars from "./pages/AdminBars";
+import AdminVenues from "./pages/AdminVenues";
+import AdminGames from "./pages/AdminGames";
 import NotFound from "./pages/NotFound";
 
 function Protected({ children }: { children: React.ReactNode }) {
@@ -43,7 +44,8 @@ export default function App() {
         <Route path="/profile" element={<Protected><Profile /></Protected>} />
         <Route path="/admin" element={<RequireAdmin><AdminDashboard /></RequireAdmin>} />
         <Route path="/admin/players" element={<RequireAdmin><AdminUsers /></RequireAdmin>} />
-        <Route path="/admin/bars" element={<RequireAdmin><AdminBars /></RequireAdmin>} />
+        <Route path="/admin/venues" element={<RequireAdmin><AdminVenues /></RequireAdmin>} />
+        <Route path="/admin/games" element={<RequireAdmin><AdminGames /></RequireAdmin>} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

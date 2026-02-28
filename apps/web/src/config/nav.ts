@@ -18,8 +18,6 @@ export const NAV_ITEMS: NavItem[] = [
   { route: "/standings", label: "Standings", icon: "◉", roles: ["member", "admin"] },
   { route: "/profile", label: "Profile", icon: "👤", roles: ["member", "admin"] },
   { route: "/admin", label: "Admin", icon: "⚙", roles: ["admin"] },
-  { route: "/admin/players", label: "Players", icon: "👥", roles: ["admin"] },
-  { route: "/admin/bars", label: "Bars", icon: "▤", roles: ["admin"] },
 ];
 
 /** Items shown when not logged in */

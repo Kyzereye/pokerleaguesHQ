@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { api } from "../api/client";
 import PasswordField from "../components/PasswordField";
-import { checkPassword } from "../utils/password";
+import PasswordValidationFeedback from "../components/PasswordValidationFeedback";
+import { isPasswordValid } from "../utils/password";
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
@@ -13,8 +14,7 @@ export default function ResetPassword() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const reqs = checkPassword(password);
-  const valid = reqs.length && reqs.upper && reqs.lower && reqs.number && password === confirm;
+  const valid = isPasswordValid(password) && password === confirm;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -66,14 +66,8 @@ export default function ResetPassword() {
         <h1>Reset password</h1>
         <form className="form" onSubmit={handleSubmit}>
           <PasswordField label="New password" id="password" value={password} onChange={setPassword} />
-          <ul className="requirements">
-            <li className={reqs.length ? "met" : ""}>At least 8 characters</li>
-            <li className={reqs.upper ? "met" : ""}>One uppercase letter</li>
-            <li className={reqs.lower ? "met" : ""}>One lowercase letter</li>
-            <li className={reqs.number ? "met" : ""}>One number</li>
-          </ul>
+          <PasswordValidationFeedback password={password} confirm={confirm} />
           <PasswordField label="Confirm password" id="confirm" value={confirm} onChange={setConfirm} />
-          {password && confirm && password !== confirm && <p className="error">Passwords do not match</p>}
           {error && <p className="error">{error}</p>}
           <button type="submit" className="btn btn-primary" disabled={loading || !valid}>Reset password</button>
         </form>

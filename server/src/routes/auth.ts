@@ -234,7 +234,7 @@ router.get("/users", authMiddleware, requireAdmin, async (_req: Request, res: Re
 router.patch("/users/:id", authMiddleware, requireAdmin, requireBody(["firstName", "lastName", "role", "status"]), async (req: Request & { user: JwtPayload }, res: Response) => {
   const { id } = req.params;
   const { firstName, lastName, role, status } = req.body as { firstName: string; lastName: string; role: string; status: string };
-  if (!["member", "admin"].includes(role)) {
+  if (!["member", "dealer", "admin"].includes(role)) {
     res.status(400).json({ error: "Invalid role" });
     return;
   }

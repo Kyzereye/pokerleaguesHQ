@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api/client";
 import PasswordField from "../components/PasswordField";
+import PasswordValidationFeedback from "../components/PasswordValidationFeedback";
 import { checkPassword } from "../utils/password";
 
 export default function Register() {
@@ -63,14 +64,8 @@ export default function Register() {
             <input id="lastName" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
           </div>
           <PasswordField label="Password" id="password" value={password} onChange={setPassword} />
-          <ul className="requirements">
-            <li className={reqs.length ? "met" : ""}>At least 8 characters</li>
-            <li className={reqs.upper ? "met" : ""}>One uppercase letter</li>
-            <li className={reqs.lower ? "met" : ""}>One lowercase letter</li>
-            <li className={reqs.number ? "met" : ""}>One number</li>
-          </ul>
+          <PasswordValidationFeedback password={password} confirm={confirm} />
           <PasswordField label="Confirm password" id="confirm" value={confirm} onChange={setConfirm} />
-          {password && confirm && password !== confirm && <p className="error">Passwords do not match</p>}
           {error && <p className="error">{error}</p>}
           <button type="submit" className="btn btn-primary" disabled={loading || !valid}>Sign up</button>
         </form>
